@@ -1,0 +1,2465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    /* From extension vscode.github */
+    /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+    .vscode-dark img[src$=\#gh-light-mode-only],
+    .vscode-light img[src$=\#gh-dark-mode-only],
+    .vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+    .vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+  <style>
+    .task-list-item {
+      list-style-type: none;
+    }
+
+    .task-list-item-checkbox {
+      margin-left: -20px;
+      vertical-align: middle;
+      pointer-events: none;
+    }
+  </style>
+  <style>
+    :root {
+      --color-note: #0969da;
+      --color-tip: #1a7f37;
+      --color-warning: #9a6700;
+      --color-severe: #bc4c00;
+      --color-caution: #d1242f;
+      --color-important: #8250df;
+    }
+  </style>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-note: #2f81f7;
+        --color-tip: #3fb950;
+        --color-warning: #d29922;
+        --color-severe: #db6d28;
+        --color-caution: #f85149;
+        --color-important: #a371f7;
+      }
+    }
+  </style>
+  <style>
+    .markdown-alert {
+      padding: 0.5rem 1rem;
+      margin-bottom: 16px;
+      color: inherit;
+      border-left: .25em solid #888;
+    }
+
+    .markdown-alert>:first-child {
+      margin-top: 0
+    }
+
+    .markdown-alert>:last-child {
+      margin-bottom: 0
+    }
+
+    .markdown-alert .markdown-alert-title {
+      display: flex;
+      font-weight: 500;
+      align-items: center;
+      line-height: 1
+    }
+
+    .markdown-alert .markdown-alert-title .octicon {
+      margin-right: 0.5rem;
+      display: inline-block;
+      overflow: visible !important;
+      vertical-align: text-bottom;
+      fill: currentColor;
+    }
+
+    .markdown-alert.markdown-alert-note {
+      border-left-color: var(--color-note);
+    }
+
+    .markdown-alert.markdown-alert-note .markdown-alert-title {
+      color: var(--color-note);
+    }
+
+    .markdown-alert.markdown-alert-important {
+      border-left-color: var(--color-important);
+    }
+
+    .markdown-alert.markdown-alert-important .markdown-alert-title {
+      color: var(--color-important);
+    }
+
+    .markdown-alert.markdown-alert-warning {
+      border-left-color: var(--color-warning);
+    }
+
+    .markdown-alert.markdown-alert-warning .markdown-alert-title {
+      color: var(--color-warning);
+    }
+
+    .markdown-alert.markdown-alert-tip {
+      border-left-color: var(--color-tip);
+    }
+
+    .markdown-alert.markdown-alert-tip .markdown-alert-title {
+      color: var(--color-tip);
+    }
+
+    .markdown-alert.markdown-alert-caution {
+      border-left-color: var(--color-caution);
+    }
+
+    .markdown-alert.markdown-alert-caution .markdown-alert-title {
+      color: var(--color-caution);
+    }
+  </style>
+
+</head>
+
+<body class="vscode-body vscode-light">
+  <form id="formulaForm">
+    <label for="name">名前（ハンドルネーム可）:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="gender">性別:</label>
+    <select id="gender" name="gender" required>
+        <option value="">選択してください</option>
+        <option value="男性">男性</option>
+        <option value="女性">女性</option>
+        <option value="その他">その他</option>
+    </select><br><br>
+  <table>
+    <thead>
+      <tr>
+        <th>選択</th>
+        <th>数式の名前</th>
+        <th>意味</th>
+        <th>数式（TeX）</th>
+        <th>習う時期</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" name="formula" value="ピタゴラスの定理"></td>
+        <td>ピタゴラスの定理</td>
+        <td>直角三角形において、斜辺の長さの平方が他の2辺の平方の和に等しい</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <msup>
+                      <mi>a</mi>
+                      <mn>2</mn>
+                    </msup>
+                    <mo>+</mo>
+                    <msup>
+                      <mi>b</mi>
+                      <mn>2</mn>
+                    </msup>
+                    <mo>=</mo>
+                    <msup>
+                      <mi>c</mi>
+                      <mn>2</mn>
+                    </msup>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> a^2 + b^2 = c^2 </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span
+                    class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8141em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">b</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">c</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>
+        </td>
+        <td>中学3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="オイラーの公式"></td>
+        <td>オイラーの公式</td>
+        <td>複素数平面上での指数関数と三角関数の関係</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <msup>
+                      <mi>e</mi>
+                      <mrow>
+                        <mi>i</mi>
+                        <mi>θ</mi>
+                      </mrow>
+                    </msup>
+                    <mo>=</mo>
+                    <mi>cos</mi>
+                    <mo>⁡</mo>
+                    <mi>θ</mi>
+                    <mo>+</mo>
+                    <mi>i</mi>
+                    <mi>sin</mi>
+                    <mo>⁡</mo>
+                    <mi>θ</mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> e^{i\theta} = \cos\theta + i\sin\theta </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.8491em;"></span><span class="mord"><span class="mord mathnormal">e</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span class="mord mathnormal mtight">i</span><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.02778em;">θ</span></span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mop">cos</span><span
+                  class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.02778em;">θ</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6944em;"></span><span class="mord mathnormal">i</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.02778em;">θ</span></span></span></span></td>
+        <td>高校3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="オイラーの多面体定理"></td>
+        <td>オイラーの多面体定理</td>
+        <td>多面体において頂点、辺、面の関係を示す公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>V</mi>
+                    <mo>−</mo>
+                    <mi>E</mi>
+                    <mo>+</mo>
+                    <mi>F</mi>
+                    <mo>=</mo>
+                    <mn>2</mn>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> V - E + F = 2 </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.22222em;">V</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.05764em;">E</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6833em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.13889em;">F</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6444em;"></span><span class="mord">2</span></span></span></span></td>
+        <td>高校2年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="ベイズの定理"></td>
+        <td>ベイズの定理</td>
+        <td>条件付き確率の計算</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>P</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>A</mi>
+                    <mi mathvariant="normal">∣</mi>
+                    <mi>B</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mrow>
+                        <mi>P</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>B</mi>
+                        <mi mathvariant="normal">∣</mi>
+                        <mi>A</mi>
+                        <mo stretchy="false">)</mo>
+                        <mi>P</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>A</mi>
+                        <mo stretchy="false">)</mo>
+                      </mrow>
+                      <mrow>
+                        <mi>P</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>B</mi>
+                        <mo stretchy="false">)</mo>
+                      </mrow>
+                    </mfrac>
+                  </mrow>
+                  <annotation encoding="application/x-tex">P(A|B) = \frac{P(B|A)P(A)}{P(B)} </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span
+                  class="mord mathnormal">A</span><span class="mord">∣</span><span class="mord mathnormal"
+                  style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span
+                                  class="mopen mtight">(</span><span class="mord mathnormal mtight"
+                                  style="margin-right:0.05017em;">B</span><span
+                                  class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span
+                              class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span
+                                  class="mopen mtight">(</span><span class="mord mathnormal mtight"
+                                  style="margin-right:0.05017em;">B</span><span class="mord mtight">∣</span><span
+                                  class="mord mathnormal mtight">A</span><span class="mclose mtight">)</span><span
+                                  class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span
+                                  class="mopen mtight">(</span><span class="mord mathnormal mtight">A</span><span
+                                  class="mclose mtight">)</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.52em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span></span></span></span></td>
+        <td>高校2年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="積分の基本定理"></td>
+        <td>積分の基本定理</td>
+        <td>積分と微分の関係を示す定理</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <msubsup>
+                      <mo>∫</mo>
+                      <mi>a</mi>
+                      <mi>b</mi>
+                    </msubsup>
+                    <msup>
+                      <mi>f</mi>
+                      <mo mathvariant="normal" lspace="0em" rspace="0em">′</mo>
+                    </msup>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                    <mi>d</mi>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mi>f</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>b</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>−</mo>
+                    <mi>f</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>a</mi>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> \int_a^b f&#x27;(x)dx = f(b) - f(a) </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1.3998em;vertical-align:-0.3558em;"></span><span class="mop"><span
+                    class="mop op-symbol small-op"
+                    style="margin-right:0.19445em;position:relative;top:-0.0006em;">∫</span><span class="msupsub"><span
+                      class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.044em;"><span
+                            style="top:-2.3442em;margin-left:-0.1945em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight">a</span></span></span><span
+                            style="top:-3.2579em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight">b</span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.3558em;"><span></span></span></span></span></span></span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal"
+                    style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span
+                        class="vlist-r"><span class="vlist" style="height:0.7519em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span
+                                  class="mord mtight">′</span></span></span></span></span></span></span></span></span><span
+                  class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span
+                  class="mord mathnormal">d</span><span class="mord mathnormal">x</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span
+                  class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span
+                  class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span></td>
+        <td>高校3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="ベクトルの内積"></td>
+        <td>ベクトルの内積</td>
+        <td>2つのベクトル間の角度や射影を計算するための演算</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi mathvariant="bold">a</mi>
+                    <mo>⋅</mo>
+                    <mi mathvariant="bold">b</mi>
+                    <mo>=</mo>
+                    <mi mathvariant="normal">∣</mi>
+                    <mi mathvariant="bold">a</mi>
+                    <mi mathvariant="normal">∣</mi>
+                    <mi mathvariant="normal">∣</mi>
+                    <mi mathvariant="bold">b</mi>
+                    <mi mathvariant="normal">∣</mi>
+                    <mi>cos</mi>
+                    <mo>⁡</mo>
+                    <mi>θ</mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex">\mathbf{a} \cdot \mathbf{b} =
+                    |\mathbf{a}||\mathbf{b}|\cos\theta </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.4445em;"></span><span class="mord mathbf">a</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6944em;"></span><span class="mord mathbf">b</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span
+                  class="mord mathbf">a</span><span class="mord">∣∣</span><span class="mord mathbf">b</span><span
+                  class="mord">∣</span><span class="mspace" style="margin-right:0.1667em;"></span><span
+                  class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span
+                  class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span></td>
+        <td>高校2年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="パスカルの三角形"></td>
+        <td>パスカルの三角形</td>
+        <td>二項係数を三角形状に配置したもの</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mrow>
+                      <mo fence="true">(</mo>
+                      <mfrac linethickness="0px">
+                        <mi>n</mi>
+                        <mi>k</mi>
+                      </mfrac>
+                      <mo fence="true">)</mo>
+                    </mrow>
+                    <mo>=</mo>
+                    <mrow>
+                      <mo fence="true">(</mo>
+                      <mfrac linethickness="0px">
+                        <mrow>
+                          <mi>n</mi>
+                          <mo>−</mo>
+                          <mn>1</mn>
+                        </mrow>
+                        <mrow>
+                          <mi>k</mi>
+                          <mo>−</mo>
+                          <mn>1</mn>
+                        </mrow>
+                      </mfrac>
+                      <mo fence="true">)</mo>
+                    </mrow>
+                    <mo>+</mo>
+                    <mrow>
+                      <mo fence="true">(</mo>
+                      <mfrac linethickness="0px">
+                        <mrow>
+                          <mi>n</mi>
+                          <mo>−</mo>
+                          <mn>1</mn>
+                        </mrow>
+                        <mi>k</mi>
+                      </mfrac>
+                      <mo fence="true">)</mo>
+                    </mrow>
+                  </mrow>
+                  <annotation encoding="application/x-tex">\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}
+                  </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mopen delimcenter"
+                    style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span
+                      class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7454em;"><span
+                            style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.03148em;">k</span></span></span></span><span
+                            style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">n</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose delimcenter" style="top:0em;"><span
+                      class="delimsizing size1">)</span></span></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.2984em;vertical-align:-0.4033em;"></span><span class="mord"><span
+                    class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span
+                    class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8951em;"><span style="top:-2.355em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span class="mord mathnormal mtight"
+                                  style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span
+                                  class="mord mtight">1</span></span></span></span><span style="top:-3.144em;"><span
+                              class="pstrut" style="height:2.7em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span
+                                  class="mord mtight">1</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.4033em;"><span></span></span></span></span></span><span
+                    class="mclose delimcenter" style="top:0em;"><span
+                      class="delimsizing size1">)</span></span></span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.2451em;vertical-align:-0.35em;"></span><span class="mord"><span
+                    class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span
+                    class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8951em;"><span style="top:-2.355em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span class="mord mathnormal mtight"
+                                  style="margin-right:0.03148em;">k</span></span></span></span><span
+                            style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span
+                                  class="mord mtight">1</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose delimcenter" style="top:0em;"><span
+                      class="delimsizing size1">)</span></span></span></span></span></span></td>
+        <td>高校1年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="黄金比"></td>
+        <td>黄金比</td>
+        <td>特定の比率で、美的に好まれる値</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>ϕ</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mrow>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <msqrt>
+                          <mn>5</mn>
+                        </msqrt>
+                      </mrow>
+                      <mn>2</mn>
+                    </mfrac>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> \phi = \frac{1 + \sqrt{5}}{2} </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.383em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:1.038em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span
+                              class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.399em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">1</span><span class="mbin mtight">+</span><span
+                                  class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span
+                                        class="vlist" style="height:0.9128em;"><span class="svg-align"
+                                          style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span
+                                            class="mord mtight" style="padding-left:0.833em;"><span
+                                              class="mord mtight">5</span></span></span><span
+                                          style="top:-2.8728em;"><span class="pstrut" style="height:3em;"></span><span
+                                            class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg
+                                              xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em"
+                                              viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice">
+                                              <path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z" />
+                                            </svg></span></span></span><span class="vlist-s">​</span></span><span
+                                      class="vlist-r"><span class="vlist"
+                                        style="height:0.1272em;"><span></span></span></span></span></span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span></span></span></span></td>
+        <td>高校1年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="ヘロンの公式"></td>
+        <td>ヘロンの公式</td>
+        <td>三角形の面積を辺の長さから求める公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>S</mi>
+                    <mo>=</mo>
+                    <msqrt>
+                      <mrow>
+                        <mi>s</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo>−</mo>
+                        <mi>a</mi>
+                        <mo stretchy="false">)</mo>
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo>−</mo>
+                        <mi>b</mi>
+                        <mo stretchy="false">)</mo>
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo>−</mo>
+                        <mi>c</mi>
+                        <mo stretchy="false">)</mo>
+                      </mrow>
+                    </msqrt>
+                    <mo separator="true">,</mo>
+                    <mo stretchy="false">(</mo>
+                    <mi>s</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mrow>
+                        <mi>a</mi>
+                        <mo>+</mo>
+                        <mi>b</mi>
+                        <mo>+</mo>
+                        <mi>c</mi>
+                      </mrow>
+                      <mn>2</mn>
+                    </mfrac>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> S = \sqrt{s(s-a)(s-b)(s-c)}, (s = \frac{a+b+c}{2} )
+                  </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.6833em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.05764em;">S</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.24em;vertical-align:-0.305em;"></span><span class="mord sqrt"><span
+                    class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span
+                          class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span
+                            class="mord" style="padding-left:1em;"><span class="mord mathnormal">s</span><span
+                              class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace"
+                              style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                              style="margin-right:0.2222em;"></span><span class="mord mathnormal">a</span><span
+                              class="mclose">)</span><span class="mopen">(</span><span
+                              class="mord mathnormal">s</span><span class="mspace"
+                              style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                              style="margin-right:0.2222em;"></span><span class="mord mathnormal">b</span><span
+                              class="mclose">)</span><span class="mopen">(</span><span
+                              class="mord mathnormal">s</span><span class="mspace"
+                              style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                              style="margin-right:0.2222em;"></span><span class="mord mathnormal">c</span><span
+                              class="mclose">)</span></span></span><span style="top:-2.895em;"><span class="pstrut"
+                            style="height:3.2em;"></span><span class="hide-tail"
+                            style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg"
+                              width="400em" height="1.28em" viewBox="0 0 400000 1296"
+                              preserveAspectRatio="xMinYMin slice">
+                              <path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z" />
+                            </svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span
+                        class="vlist" style="height:0.305em;"><span></span></span></span></span></span><span
+                  class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span
+                  class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span
+                              class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">a</span><span class="mbin mtight">+</span><span
+                                  class="mord mathnormal mtight">b</span><span class="mbin mtight">+</span><span
+                                  class="mord mathnormal mtight">c</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></td>
+        <td>高校2年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="フェルマーの小定理"></td>
+        <td>フェルマーの小定理</td>
+        <td>素数と整数の関係を示す</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <msup>
+                      <mi>a</mi>
+                      <mi>p</mi>
+                    </msup>
+                    <mo>≡</mo>
+                    <mi>a</mi>
+                    <mtext> </mtext>
+                    <mo stretchy="false">(</mo>
+                    <mrow>
+                      <mi mathvariant="normal">m</mi>
+                      <mi mathvariant="normal">o</mi>
+                      <mi mathvariant="normal">d</mi>
+                    </mrow>
+                    <mtext> </mtext>
+                    <mi>p</mi>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> a^p \equiv a \ (\mathrm{mod} \ p) </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.6644em;"></span><span class="mord"><span class="mord mathnormal">a</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight">p</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span
+                  class="mspace"> </span><span class="mopen">(</span><span class="mord"><span
+                    class="mord mathrm">mod</span></span><span class="mspace"> </span><span
+                  class="mord mathnormal">p</span><span class="mclose">)</span></span></span></span></td>
+        <td>高校3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="解の公式（二次方程式）"></td>
+        <td>解の公式（二次方程式）</td>
+        <td>二次方程式の解を求める公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mrow>
+                        <mo>−</mo>
+                        <mi>b</mi>
+                        <mo>±</mo>
+                        <msqrt>
+                          <mrow>
+                            <msup>
+                              <mi>b</mi>
+                              <mn>2</mn>
+                            </msup>
+                            <mo>−</mo>
+                            <mn>4</mn>
+                            <mi>a</mi>
+                            <mi>c</mi>
+                          </mrow>
+                        </msqrt>
+                      </mrow>
+                      <mrow>
+                        <mn>2</mn>
+                        <mi>a</mi>
+                      </mrow>
+                    </mfrac>
+                  </mrow>
+                  <annotation encoding="application/x-tex">x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.3845em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:1.0395em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">2</span><span
+                                  class="mord mathnormal mtight">a</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">−</span><span class="mord mathnormal mtight">b</span><span
+                                  class="mbin mtight">±</span><span class="mord sqrt mtight"><span
+                                    class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+                                        style="height:0.9221em;"><span class="svg-align" style="top:-3em;"><span
+                                            class="pstrut" style="height:3em;"></span><span class="mord mtight"
+                                            style="padding-left:0.833em;"><span class="mord mtight"><span
+                                                class="mord mathnormal mtight">b</span><span class="msupsub"><span
+                                                  class="vlist-t"><span class="vlist-r"><span class="vlist"
+                                                      style="height:0.7463em;"><span
+                                                        style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut"
+                                                          style="height:2.5em;"></span><span
+                                                          class="sizing reset-size3 size1 mtight"><span
+                                                            class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                                              class="mbin mtight">−</span><span class="mord mtight">4</span><span
+                                              class="mord mathnormal mtight">a</span><span
+                                              class="mord mathnormal mtight">c</span></span></span><span
+                                          style="top:-2.8821em;"><span class="pstrut" style="height:3em;"></span><span
+                                            class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg
+                                              xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em"
+                                              viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice">
+                                              <path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z" />
+                                            </svg></span></span></span><span class="vlist-s">​</span></span><span
+                                      class="vlist-r"><span class="vlist"
+                                        style="height:0.1179em;"><span></span></span></span></span></span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span></span></span></span></td>
+        <td>中学3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="加法定理（三角関数）"></td>
+        <td>加法定理（三角関数）</td>
+        <td>三角関数の和や差を計算する公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>sin</mi>
+                    <mo>⁡</mo>
+                    <mo stretchy="false">(</mo>
+                    <mi>A</mi>
+                    <mo>±</mo>
+                    <mi>B</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>=</mo>
+                    <mi>sin</mi>
+                    <mo>⁡</mo>
+                    <mi>A</mi>
+                    <mi>cos</mi>
+                    <mo>⁡</mo>
+                    <mi>B</mi>
+                    <mo>±</mo>
+                    <mi>cos</mi>
+                    <mo>⁡</mo>
+                    <mi>A</mi>
+                    <mi>sin</mi>
+                    <mo>⁡</mo>
+                    <mi>B</mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> \sin(A \pm B) = \sin A \cos B \pm \cos A \sin B
+                  </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mop">sin</span><span
+                  class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">±</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mop">sin</span><span
+                  class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">A</span><span
+                  class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.05017em;">B</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">±</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6833em;"></span><span class="mop">cos</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal">A</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.05017em;">B</span></span></span></span></td>
+        <td>高校2年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="二倍角の公式（三角関数）"></td>
+        <td>二倍角の公式（三角関数）</td>
+        <td>三角関数の角度が倍になる場合の公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>sin</mi>
+                    <mo>⁡</mo>
+                    <mn>2</mn>
+                    <mi>θ</mi>
+                    <mo>=</mo>
+                    <mn>2</mn>
+                    <mi>sin</mi>
+                    <mo>⁡</mo>
+                    <mi>θ</mi>
+                    <mi>cos</mi>
+                    <mo>⁡</mo>
+                    <mi>θ</mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> \sin 2\theta = 2\sin\theta\cos\theta </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.6944em;"></span><span class="mop">sin</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mord mathnormal"
+                  style="margin-right:0.02778em;">θ</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6944em;"></span><span class="mord">2</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.02778em;">θ</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.02778em;">θ</span></span></span></span></td>
+        <td>高校2年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="指数法則"></td>
+        <td>指数法則</td>
+        <td>指数の計算規則</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <msup>
+                      <mi>a</mi>
+                      <mi>m</mi>
+                    </msup>
+                    <mo>⋅</mo>
+                    <msup>
+                      <mi>a</mi>
+                      <mi>n</mi>
+                    </msup>
+                    <mo>=</mo>
+                    <msup>
+                      <mi>a</mi>
+                      <mrow>
+                        <mi>m</mi>
+                        <mo>+</mo>
+                        <mi>n</mi>
+                      </mrow>
+                    </msup>
+                  </mrow>
+                  <annotation encoding="application/x-tex"> a^m \cdot a^n = a^{m+n} </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.6644em;"></span><span class="mord"><span class="mord mathnormal">a</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6644em;"></span><span class="mord"><span class="mord mathnormal">a</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.7713em;"></span><span class="mord"><span class="mord mathnormal">a</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span class="mord mathnormal mtight">m</span><span
+                                  class="mbin mtight">+</span><span
+                                  class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span>
+        </td>
+        <td>中学2年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="対数法則"></td>
+        <td>対数法則</td>
+        <td>対数の計算規則</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <msub>
+                      <mrow>
+                        <mi>log</mi>
+                        <mo>⁡</mo>
+                      </mrow>
+                      <mi>a</mi>
+                    </msub>
+                    <mo stretchy="false">(</mo>
+                    <mi>m</mi>
+                    <mi>n</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>=</mo>
+                    <msub>
+                      <mrow>
+                        <mi>log</mi>
+                        <mo>⁡</mo>
+                      </mrow>
+                      <mi>a</mi>
+                    </msub>
+                    <mi>m</mi>
+                    <mo>+</mo>
+                    <msub>
+                      <mrow>
+                        <mi>log</mi>
+                        <mo>⁡</mo>
+                      </mrow>
+                      <mi>a</mi>
+                    </msub>
+                    <mi>n</mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex">\log_a(mn) = \log_a m + \log_a n</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lo<span
+                      style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span
+                      class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0573em;"><span
+                            style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight">a</span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.2441em;"><span></span></span></span></span></span></span><span
+                  class="mopen">(</span><span class="mord mathnormal">mn</span><span class="mclose">)</span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.9386em;vertical-align:-0.2441em;"></span><span class="mop"><span class="mop">lo<span
+                      style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span
+                      class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0573em;"><span
+                            style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight">a</span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.9386em;vertical-align:-0.2441em;"></span><span class="mop"><span class="mop">lo<span
+                      style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span
+                      class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0573em;"><span
+                            style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight">a</span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span></span></span></span></td>
+        <td>高校1年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="三角形の面積公式"></td>
+        <td>三角形の面積公式</td>
+        <td>三角形の面積を求める公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>S</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>2</mn>
+                    </mfrac>
+                    <mi>a</mi>
+                    <mi>b</mi>
+                    <mi>sin</mi>
+                    <mo>⁡</mo>
+                    <mi>C</mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex">S = \frac{1}{2}ab\sin C</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.6833em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.05764em;">S</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span
+                              class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">1</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mord mathnormal">ab</span><span
+                  class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.07153em;">C</span></span></span></span></td>
+        <td>高校1年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="円の方程式"></td>
+        <td>円の方程式</td>
+        <td>円の中心と半径を表す式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo>−</mo>
+                    <mi>a</mi>
+                    <msup>
+                      <mo stretchy="false">)</mo>
+                      <mn>2</mn>
+                    </msup>
+                    <mo>+</mo>
+                    <mo stretchy="false">(</mo>
+                    <mi>y</mi>
+                    <mo>−</mo>
+                    <mi>b</mi>
+                    <msup>
+                      <mo stretchy="false">)</mo>
+                      <mn>2</mn>
+                    </msup>
+                    <mo>=</mo>
+                    <msup>
+                      <mi>r</mi>
+                      <mn>2</mn>
+                    </msup>
+                  </mrow>
+                  <annotation encoding="application/x-tex">(x-a)^2 + (y-b)^2 = r^2</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span
+                  class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span
+                  class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span
+                class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span
+                  class="mord mathnormal">a</span><span class="mclose"><span class="mclose">)</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span
+                  class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span
+                  class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8141em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal"
+                    style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8141em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>
+        </td>
+        <td>中学3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="二項定理"></td>
+        <td>二項定理</td>
+        <td>二項式の冪乗を展開する公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mo stretchy="false">(</mo>
+                    <mi>a</mi>
+                    <mo>+</mo>
+                    <mi>b</mi>
+                    <msup>
+                      <mo stretchy="false">)</mo>
+                      <mi>n</mi>
+                    </msup>
+                    <mo>=</mo>
+                    <msubsup>
+                      <mo>∑</mo>
+                      <mrow>
+                        <mi>k</mi>
+                        <mo>=</mo>
+                        <mn>0</mn>
+                      </mrow>
+                      <mi>n</mi>
+                    </msubsup>
+                    <mrow>
+                      <mo fence="true">(</mo>
+                      <mfrac linethickness="0px">
+                        <mi>n</mi>
+                        <mi>k</mi>
+                      </mfrac>
+                      <mo fence="true">)</mo>
+                    </mrow>
+                    <msup>
+                      <mi>a</mi>
+                      <mrow>
+                        <mi>n</mi>
+                        <mo>−</mo>
+                        <mi>k</mi>
+                      </mrow>
+                    </msup>
+                    <msup>
+                      <mi>b</mi>
+                      <mi>k</mi>
+                    </msup>
+                  </mrow>
+                  <annotation encoding="application/x-tex">(a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k}b^k</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span
+                  class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span
+                  class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span
+                class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span
+                  class="mord mathnormal">b</span><span class="mclose"><span class="mclose">)</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.2em;vertical-align:-0.35em;"></span><span class="mop"><span
+                    class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span
+                    class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8043em;"><span
+                            style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span class="mord mathnormal mtight"
+                                  style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span
+                                  class="mord mtight">0</span></span></span></span><span
+                            style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span
+                                  class="mord mathnormal mtight">n</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen delimcenter"
+                    style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span
+                      class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7454em;"><span
+                            style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.03148em;">k</span></span></span></span><span
+                            style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">n</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose delimcenter" style="top:0em;"><span
+                      class="delimsizing size1">)</span></span></span><span class="mord"><span
+                    class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8491em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span class="mord mathnormal mtight">n</span><span
+                                  class="mbin mtight">−</span><span class="mord mathnormal mtight"
+                                  style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span><span
+                  class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8491em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mathnormal mtight"
+                                style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span>
+        </td>
+        <td>高校1年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="余弦定理"></td>
+        <td>余弦定理</td>
+        <td>三角形の辺と角の関係を示す公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <msup>
+                      <mi>c</mi>
+                      <mn>2</mn>
+                    </msup>
+                    <mo>=</mo>
+                    <msup>
+                      <mi>a</mi>
+                      <mn>2</mn>
+                    </msup>
+                    <mo>+</mo>
+                    <msup>
+                      <mi>b</mi>
+                      <mn>2</mn>
+                    </msup>
+                    <mo>−</mo>
+                    <mn>2</mn>
+                    <mi>a</mi>
+                    <mi>b</mi>
+                    <mi>cos</mi>
+                    <mo>⁡</mo>
+                    <mi>C</mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex">c^2 = a^2 + b^2 - 2ab\cos C</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">c</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span
+                    class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8141em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span
+                    class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8141em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6944em;"></span><span class="mord">2</span><span
+                  class="mord mathnormal">ab</span><span class="mspace" style="margin-right:0.1667em;"></span><span
+                  class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span
+                  class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></td>
+        <td>高校1年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="正弦定理"></td>
+        <td>正弦定理</td>
+        <td>三角形の角と対辺の比が等しいことを示す</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mfrac>
+                      <mi>a</mi>
+                      <mrow>
+                        <mi>sin</mi>
+                        <mo>⁡</mo>
+                        <mi>A</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mi>b</mi>
+                      <mrow>
+                        <mi>sin</mi>
+                        <mo>⁡</mo>
+                        <mi>B</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mi>c</mi>
+                      <mrow>
+                        <mi>sin</mi>
+                        <mo>⁡</mo>
+                        <mi>C</mi>
+                      </mrow>
+                    </mfrac>
+                  </mrow>
+                  <annotation encoding="application/x-tex">\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}
+                  </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1.0404em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mop mtight"><span class="mtight">s</span><span class="mtight">i</span><span
+                                    class="mtight">n</span></span><span class="mspace mtight"
+                                  style="margin-right:0.1952em;"></span><span
+                                  class="mord mathnormal mtight">A</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">a</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mop mtight"><span class="mtight">s</span><span class="mtight">i</span><span
+                                    class="mtight">n</span></span><span class="mspace mtight"
+                                  style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight"
+                                  style="margin-right:0.05017em;">B</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">b</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.0404em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mop mtight"><span class="mtight">s</span><span class="mtight">i</span><span
+                                    class="mtight">n</span></span><span class="mspace mtight"
+                                  style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight"
+                                  style="margin-right:0.07153em;">C</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">c</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span></span></span></span></td>
+        <td>高校1年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="複素数の極形式"></td>
+        <td>複素数の極形式</td>
+        <td>複素数を極形式で表す</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>z</mi>
+                    <mo>=</mo>
+                    <mi>r</mi>
+                    <msup>
+                      <mi>e</mi>
+                      <mrow>
+                        <mi>i</mi>
+                        <mi>θ</mi>
+                      </mrow>
+                    </msup>
+                  </mrow>
+                  <annotation encoding="application/x-tex">z = re^{i\theta}</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.4306em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.04398em;">z</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.8491em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.02778em;">r</span><span class="mord"><span class="mord mathnormal">e</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span class="mord mathnormal mtight">i</span><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.02778em;">θ</span></span></span></span></span></span></span></span></span></span></span></span>
+        </td>
+        <td>高校3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="点と直線の距離公式"></td>
+        <td>点と直線の距離公式</td>
+        <td>点と直線の最短距離を計算する公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>d</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mrow>
+                        <mi mathvariant="normal">∣</mi>
+                        <mi>a</mi>
+                        <msub>
+                          <mi>x</mi>
+                          <mn>1</mn>
+                        </msub>
+                        <mo>+</mo>
+                        <mi>b</mi>
+                        <msub>
+                          <mi>y</mi>
+                          <mn>1</mn>
+                        </msub>
+                        <mo>+</mo>
+                        <mi>c</mi>
+                        <mi mathvariant="normal">∣</mi>
+                      </mrow>
+                      <msqrt>
+                        <mrow>
+                          <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                          </msup>
+                          <mo>+</mo>
+                          <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                          </msup>
+                        </mrow>
+                      </msqrt>
+                    </mfrac>
+                  </mrow>
+                  <annotation encoding="application/x-tex">d = \frac{|ax_1 + by_1 + c|}{\sqrt{a^2 + b^2}}</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.6944em;"></span><span class="mord mathnormal">d</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.548em;vertical-align:-0.538em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.5445em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span
+                                        class="vlist" style="height:0.9221em;"><span class="svg-align"
+                                          style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span
+                                            class="mord mtight" style="padding-left:0.833em;"><span
+                                              class="mord mtight"><span class="mord mathnormal mtight">a</span><span
+                                                class="msupsub"><span class="vlist-t"><span class="vlist-r"><span
+                                                      class="vlist" style="height:0.7463em;"><span
+                                                        style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut"
+                                                          style="height:2.5em;"></span><span
+                                                          class="sizing reset-size3 size1 mtight"><span
+                                                            class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                                              class="mbin mtight">+</span><span class="mord mtight"><span
+                                                class="mord mathnormal mtight">b</span><span class="msupsub"><span
+                                                  class="vlist-t"><span class="vlist-r"><span class="vlist"
+                                                      style="height:0.7463em;"><span
+                                                        style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut"
+                                                          style="height:2.5em;"></span><span
+                                                          class="sizing reset-size3 size1 mtight"><span
+                                                            class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span
+                                          style="top:-2.8821em;"><span class="pstrut" style="height:3em;"></span><span
+                                            class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg
+                                              xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em"
+                                              viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice">
+                                              <path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z" />
+                                            </svg></span></span></span><span class="vlist-s">​</span></span><span
+                                      class="vlist-r"><span class="vlist"
+                                        style="height:0.1179em;"><span></span></span></span></span></span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">∣</span><span class="mord mathnormal mtight">a</span><span
+                                  class="mord mtight"><span class="mord mathnormal mtight">x</span><span
+                                    class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span
+                                          class="vlist" style="height:0.3173em;"><span
+                                            style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span
+                                              class="pstrut" style="height:2.5em;"></span><span
+                                              class="sizing reset-size3 size1 mtight"><span
+                                                class="mord mtight">1</span></span></span></span><span
+                                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                                          style="height:0.143em;"><span></span></span></span></span></span></span><span
+                                  class="mbin mtight">+</span><span class="mord mathnormal mtight">b</span><span
+                                  class="mord mtight"><span class="mord mathnormal mtight"
+                                    style="margin-right:0.03588em;">y</span><span class="msupsub"><span
+                                      class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+                                          style="height:0.3173em;"><span
+                                            style="top:-2.357em;margin-left:-0.0359em;margin-right:0.0714em;"><span
+                                              class="pstrut" style="height:2.5em;"></span><span
+                                              class="sizing reset-size3 size1 mtight"><span
+                                                class="mord mtight">1</span></span></span></span><span
+                                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                                          style="height:0.143em;"><span></span></span></span></span></span></span><span
+                                  class="mbin mtight">+</span><span class="mord mathnormal mtight">c</span><span
+                                  class="mord mtight">∣</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.538em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span></span></span></span></td>
+        <td>高校2年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="平方完成"></td>
+        <td>平方完成</td>
+        <td>二次式を平方の形に変形する操作</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>a</mi>
+                    <msup>
+                      <mi>x</mi>
+                      <mn>2</mn>
+                    </msup>
+                    <mo>+</mo>
+                    <mi>b</mi>
+                    <mi>x</mi>
+                    <mo>+</mo>
+                    <mi>c</mi>
+                    <mo>=</mo>
+                    <mi>a</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo>+</mo>
+                    <mfrac>
+                      <mi>b</mi>
+                      <mrow>
+                        <mn>2</mn>
+                        <mi>a</mi>
+                      </mrow>
+                    </mfrac>
+                    <msup>
+                      <mo stretchy="false">)</mo>
+                      <mn>2</mn>
+                    </msup>
+                    <mo>−</mo>
+                    <mfrac>
+                      <msup>
+                        <mi>b</mi>
+                        <mn>2</mn>
+                      </msup>
+                      <mrow>
+                        <mn>4</mn>
+                        <mi>a</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo>+</mo>
+                    <mi>c</mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex">ax^2 + bx + c = a(x + \frac{b}{2a})^2 - \frac{b^2}{4a} + c
+                  </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span
+                  class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8141em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">b</span><span
+                  class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span
+                  class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span
+                class="base"><span class="strut" style="height:0.4306em;"></span><span
+                  class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span
+                  class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span
+                class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span
+                  class="mord mathnormal">a</span><span class="mopen">(</span><span
+                  class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span
+                  class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span
+                class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em;"></span><span
+                  class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span
+                      class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span
+                            style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">2</span><span
+                                  class="mord mathnormal mtight">a</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">b</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mclose"><span class="mclose">)</span><span
+                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                          style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">2</span></span></span></span></span></span></span></span><span
+                  class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.3629em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:1.0179em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">4</span><span
+                                  class="mord mathnormal mtight">a</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight"><span class="mord mathnormal mtight">b</span><span
+                                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                                          style="height:0.8913em;"><span
+                                            style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut"
+                                              style="height:2.5em;"></span><span
+                                              class="sizing reset-size3 size1 mtight"><span
+                                                class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span></td>
+        <td>中学3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="双曲線関数"></td>
+        <td>双曲線関数</td>
+        <td>双曲線を基にした関数</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>sinh</mi>
+                    <mo>⁡</mo>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mrow>
+                        <msup>
+                          <mi>e</mi>
+                          <mi>x</mi>
+                        </msup>
+                        <mo>−</mo>
+                        <msup>
+                          <mi>e</mi>
+                          <mrow>
+                            <mo>−</mo>
+                            <mi>x</mi>
+                          </mrow>
+                        </msup>
+                      </mrow>
+                      <mn>2</mn>
+                    </mfrac>
+                    <mo separator="true">,</mo>
+                    <mi>cosh</mi>
+                    <mo>⁡</mo>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mrow>
+                        <msup>
+                          <mi>e</mi>
+                          <mi>x</mi>
+                        </msup>
+                        <mo>+</mo>
+                        <msup>
+                          <mi>e</mi>
+                          <mrow>
+                            <mo>−</mo>
+                            <mi>x</mi>
+                          </mrow>
+                        </msup>
+                      </mrow>
+                      <mn>2</mn>
+                    </mfrac>
+                  </mrow>
+                  <annotation encoding="application/x-tex">\sinh x = \frac{e^x - e^{-x}}{2}, \cosh x = \frac{e^x +
+                    e^{-x}}{2}</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.6944em;"></span><span class="mop">sinh</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.3324em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.9874em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span
+                              class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight"><span class="mord mathnormal mtight">e</span><span
+                                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                                          style="height:0.7385em;"><span
+                                            style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut"
+                                              style="height:2.5em;"></span><span
+                                              class="sizing reset-size3 size1 mtight"><span
+                                                class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span
+                                  class="mbin mtight">−</span><span class="mord mtight"><span
+                                    class="mord mathnormal mtight">e</span><span class="msupsub"><span
+                                      class="vlist-t"><span class="vlist-r"><span class="vlist"
+                                          style="height:0.8477em;"><span
+                                            style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut"
+                                              style="height:2.5em;"></span><span
+                                              class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span
+                                                  class="mord mtight">−</span><span
+                                                  class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mop">cosh</span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.3324em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.9874em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span
+                              class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight"><span class="mord mathnormal mtight">e</span><span
+                                    class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist"
+                                          style="height:0.7385em;"><span
+                                            style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut"
+                                              style="height:2.5em;"></span><span
+                                              class="sizing reset-size3 size1 mtight"><span
+                                                class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span
+                                  class="mbin mtight">+</span><span class="mord mtight"><span
+                                    class="mord mathnormal mtight">e</span><span class="msupsub"><span
+                                      class="vlist-t"><span class="vlist-r"><span class="vlist"
+                                          style="height:0.8477em;"><span
+                                            style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut"
+                                              style="height:2.5em;"></span><span
+                                              class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span
+                                                  class="mord mtight">−</span><span
+                                                  class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span></span></span></span></td>
+        <td>高校3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="相加相乗平均"></td>
+        <td>相加相乗平均</td>
+        <td>相加平均と相乗平均の大小関係を示す</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mfrac>
+                      <mrow>
+                        <mi>a</mi>
+                        <mo>+</mo>
+                        <mi>b</mi>
+                      </mrow>
+                      <mn>2</mn>
+                    </mfrac>
+                    <mo>≥</mo>
+                    <msqrt>
+                      <mrow>
+                        <mi>a</mi>
+                        <mi>b</mi>
+                      </mrow>
+                    </msqrt>
+                  </mrow>
+                  <annotation encoding="application/x-tex">\frac{a+b}{2} \geq \sqrt{ab}</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span
+                              class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">a</span><span class="mbin mtight">+</span><span
+                                  class="mord mathnormal mtight">b</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.04em;vertical-align:-0.1078em;"></span><span class="mord sqrt"><span
+                    class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span
+                          class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span
+                            class="mord" style="padding-left:0.833em;"><span
+                              class="mord mathnormal">ab</span></span></span><span style="top:-2.8922em;"><span
+                            class="pstrut" style="height:3em;"></span><span class="hide-tail"
+                            style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg"
+                              width="400em" height="1.08em" viewBox="0 0 400000 1080"
+                              preserveAspectRatio="xMinYMin slice">
+                              <path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z" />
+                            </svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span
+                        class="vlist"
+                        style="height:0.1078em;"><span></span></span></span></span></span></span></span></span></td>
+        <td>高校1年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="接線の方程式"></td>
+        <td>接線の方程式</td>
+        <td>曲線上の接点での接線の方程式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>y</mi>
+                    <mo>−</mo>
+                    <msub>
+                      <mi>y</mi>
+                      <mn>1</mn>
+                    </msub>
+                    <mo>=</mo>
+                    <msup>
+                      <mi>f</mi>
+                      <mo mathvariant="normal" lspace="0em" rspace="0em">′</mo>
+                    </msup>
+                    <mo stretchy="false">(</mo>
+                    <msub>
+                      <mi>x</mi>
+                      <mn>1</mn>
+                    </msub>
+                    <mo stretchy="false">)</mo>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo>−</mo>
+                    <msub>
+                      <mi>x</mi>
+                      <mn>1</mn>
+                    </msub>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                  <annotation encoding="application/x-tex">y - y_1 = f&#x27;(x_1)(x - x_1)</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.03588em;">y</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span
+                    class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span
+                      class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span
+                            style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">1</span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord"><span
+                    class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span
+                      class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span
+                            style="top:-3.063em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span
+                                  class="mord mtight">′</span></span></span></span></span></span></span></span></span><span
+                  class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span
+                    class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+                          style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span
+                              class="pstrut" style="height:2.7em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">1</span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.15em;"><span></span></span></span></span></span></span><span
+                  class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span
+                  class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span
+                    class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.3011em;"><span
+                            style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight">1</span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.15em;"><span></span></span></span></span></span></span><span
+                  class="mclose">)</span></span></span></span></td>
+        <td>高校3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="因数定理"></td>
+        <td>因数定理</td>
+        <td>多項式の因数を見つけるための定理</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>f</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>a</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mtext>  </mtext>
+                    <mo>⟹</mo>
+                    <mtext>  </mtext>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo>−</mo>
+                    <mi>a</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo stretchy="false">)</mo>
+                    <mtext>は</mtext>
+                    <mo stretchy="false">(</mo>
+                    <mi>f</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                  <annotation encoding="application/x-tex">f(a) = 0 \implies (x-a)) は (f(x)</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span
+                  class="mord mathnormal">a</span><span class="mclose">)</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6684em;vertical-align:-0.024em;"></span><span class="mord">0</span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span
+                  class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span
+                  class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span
+                class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span
+                  class="mord mathnormal">a</span><span class="mclose">))</span><span
+                  class="mord cjk_fallback">は</span><span class="mopen">(</span><span class="mord mathnormal"
+                  style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span
+                  class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> の因数</td>
+        <td>高校2年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="チェバの定理"></td>
+        <td>チェバの定理</td>
+        <td>三角形の内部で交わる線分の比率の条件</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mfrac>
+                      <mrow>
+                        <mi>A</mi>
+                        <mi>F</mi>
+                      </mrow>
+                      <mrow>
+                        <mi>F</mi>
+                        <mi>B</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo>⋅</mo>
+                    <mfrac>
+                      <mrow>
+                        <mi>B</mi>
+                        <mi>D</mi>
+                      </mrow>
+                      <mrow>
+                        <mi>D</mi>
+                        <mi>C</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo>⋅</mo>
+                    <mfrac>
+                      <mrow>
+                        <mi>C</mi>
+                        <mi>E</mi>
+                      </mrow>
+                      <mrow>
+                        <mi>E</mi>
+                        <mi>A</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mn>1</mn>
+                  </mrow>
+                  <annotation encoding="application/x-tex">\frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = 1
+                  </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.05017em;">FB</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">A</span><span class="mord mathnormal mtight"
+                                  style="margin-right:0.13889em;">F</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.07153em;">C</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.02778em;">D</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span><span
+                                  class="mord mathnormal mtight">A</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.05764em;">CE</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td>
+        <td>高校3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="メネラウスの定理"></td>
+        <td>メネラウスの定理</td>
+        <td>三角形の外部で直線が交わる場合の比率の条件</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mfrac>
+                      <mrow>
+                        <mi>A</mi>
+                        <mi>P</mi>
+                      </mrow>
+                      <mrow>
+                        <mi>P</mi>
+                        <mi>B</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo>⋅</mo>
+                    <mfrac>
+                      <mrow>
+                        <mi>B</mi>
+                        <mi>Q</mi>
+                      </mrow>
+                      <mrow>
+                        <mi>Q</mi>
+                        <mi>C</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo>⋅</mo>
+                    <mfrac>
+                      <mrow>
+                        <mi>C</mi>
+                        <mi>R</mi>
+                      </mrow>
+                      <mrow>
+                        <mi>R</mi>
+                        <mi>A</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mn>1</mn>
+                  </mrow>
+                  <annotation encoding="application/x-tex">\frac{AP}{PB} \cdot \frac{BQ}{QC} \cdot \frac{CR}{RA} = 1
+                  </annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.05017em;">PB</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">A</span><span class="mord mathnormal mtight"
+                                  style="margin-right:0.13889em;">P</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.4055em;vertical-align:-0.4811em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.9244em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.07153em;">QC</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">BQ</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.4811em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace"
+                  style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span
+                                  class="mord mathnormal mtight">A</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.00773em;">CR</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.345em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td>
+        <td>高校3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="はさみうちの原理"></td>
+        <td>はさみうちの原理</td>
+        <td>関数の極限を求めるための手法</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <msub>
+                      <mrow>
+                        <mi>lim</mi>
+                        <mo>⁡</mo>
+                      </mrow>
+                      <mrow>
+                        <mi>x</mi>
+                        <mo>→</mo>
+                        <mi>a</mi>
+                      </mrow>
+                    </msub>
+                    <mi>g</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>≤</mo>
+                    <mi>f</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>≤</mo>
+                    <mi>h</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                    <mtext>  </mtext>
+                    <mo>⟹</mo>
+                    <mtext>  </mtext>
+                    <msub>
+                      <mrow>
+                        <mi>lim</mi>
+                        <mo>⁡</mo>
+                      </mrow>
+                      <mrow>
+                        <mi>x</mi>
+                        <mo>→</mo>
+                        <mi>a</mi>
+                      </mrow>
+                    </msub>
+                    <mi>f</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>=</mo>
+                    <mi>L</mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex">\lim_{x \to a} g(x) \leq f(x) \leq h(x) \implies \lim_{x \to
+                    a} f(x) = L</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lim</span><span
+                    class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+                          style="height:0.1514em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span class="mord mathnormal mtight">x</span><span
+                                  class="mrel mtight">→</span><span
+                                  class="mord mathnormal mtight">a</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span
+                  class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span
+                  class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span
+                  class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span
+                  class="mspace" style="margin-right:0.2778em;"></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lim</span><span
+                    class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist"
+                          style="height:0.1514em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut"
+                              style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span
+                                class="mord mtight"><span class="mord mathnormal mtight">x</span><span
+                                  class="mrel mtight">→</span><span
+                                  class="mord mathnormal mtight">a</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace"
+                  style="margin-right:0.1667em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span
+                  class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span></td>
+        <td>高校3年生</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="formula" value="無限等比級数の和"></td>
+        <td>無限等比級数の和</td>
+        <td>無限等比数列の和を求める公式</td>
+        <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                  <mrow>
+                    <mi>S</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mi>a</mi>
+                      <mrow>
+                        <mn>1</mn>
+                        <mo>−</mo>
+                        <mi>r</mi>
+                      </mrow>
+                    </mfrac>
+                    <mo stretchy="false">(</mo>
+                    <mi mathvariant="normal">∣</mi>
+                    <mi>r</mi>
+                    <mi mathvariant="normal">∣</mi>
+                    <mo>&lt;</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                  <annotation encoding="application/x-tex">S = \frac{a}{1-r} (|r| &lt; 1)</annotation>
+                </semantics>
+              </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut"
+                  style="height:0.6833em;"></span><span class="mord mathnormal"
+                  style="margin-right:0.05764em;">S</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace"
+                  style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut"
+                  style="height:1.1533em;vertical-align:-0.4033em;"></span><span class="mord"><span
+                    class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span
+                        class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mtight">1</span><span class="mbin mtight">−</span><span
+                                  class="mord mathnormal mtight"
+                                  style="margin-right:0.02778em;">r</span></span></span></span><span
+                            style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line"
+                              style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span
+                              class="pstrut" style="height:3em;"></span><span
+                              class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span
+                                  class="mord mathnormal mtight">a</span></span></span></span></span><span
+                          class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist"
+                          style="height:0.4033em;"><span></span></span></span></span></span><span
+                    class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span
+                  class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span
+                  class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span
+                  class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span
+                class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span
+                  class="mord">1</span><span class="mclose">)</span></span></span></span></td>
+        <td>高校2年生</td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="submit">送信</button>
+</form>
+
+  <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+
+  <script>
+    const form = document.getElementById('formulaForm');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const selectedFormulas = [];
+        formData.getAll('formula').forEach(value => selectedFormulas.push(value));
+        
+        const payload = {
+            name: formData.get('name'),
+            gender: formData.get('gender'),
+            formulas: selectedFormulas
+        };
+        
+        try {
+            const response = await fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const result = await response.json();
+            if (result.status === 'success') {
+                alert('送信が成功しました！');
+            } else {
+                alert('送信に失敗しました。');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('送信中にエラーが発生しました。');
+        }
+    });
+</script>
+</body>
+
+</html>
